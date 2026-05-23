@@ -91,3 +91,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+  fonts:
+    - family: Gelasio-Bold
+      fonts:
+        - asset: assets/fonts/Gelasio-Bold.ttf

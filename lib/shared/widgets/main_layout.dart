@@ -6,16 +6,18 @@ import 'package:berries_p2p_app/features/messages/presentation/screens/messages.
 import 'package:berries_p2p_app/features/profile/presentation/screens/profile.dart';
 
 class MainLayout extends StatefulWidget {
-  final String title;
+  final String? title;
   final bool withBottomNavigation;
+  final bool withAppBar;
   final VoidCallback? onFabPressed;
   final Widget? body;
   final bool? automaticallyImplyLeading;
 
   const MainLayout({
     super.key,
-    required this.title,
+    this.title = '',
     this.withBottomNavigation = true,
+    this.withAppBar = true,   
     this.onFabPressed,
     required this.body,
     this.automaticallyImplyLeading = true,
@@ -46,14 +48,14 @@ class _MainLayoutState extends State<MainLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromARGB(15, 81, 202, 83),
 
-      appBar: AppBar(
+      appBar: widget.withAppBar ? AppBar(
         foregroundColor: Colors.white,
-        title: Text(
-          widget.title,
+        title: widget.title != '' ? Text(
+          widget.title!,
           style: const TextStyle(fontSize: 18),
-        ),
+        ) : null,
         backgroundColor: colorPrimary,
         elevation: 0,
         automaticallyImplyLeading: widget.automaticallyImplyLeading ?? true,
@@ -63,7 +65,7 @@ class _MainLayoutState extends State<MainLayout> {
             onPressed: () {},
           ),
         ],
-      ),
+      ) : null,
 
       body: widget.body,
 

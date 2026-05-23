@@ -5,6 +5,7 @@ import 'package:berries_p2p_app/shared/widgets/main_layout.dart';
 import 'package:berries_p2p_app/shared/widgets/custom_card.dart';
 import 'package:berries_p2p_app/shared/widgets/notification_banner.dart';
 import 'package:berries_p2p_app/features/home/presentation/screens/location.dart';
+import 'package:berries_p2p_app/features/home/presentation/screens/exchange_in_process.dart';
 
 class RequestDetail extends StatelessWidget {
   final Color _colorPrimary = AppColors.primary;
@@ -42,7 +43,6 @@ class RequestDetail extends StatelessWidget {
               ),
               SizedBox(height: 16),
               CustomCard(
-                title: 'Detalles del intercambio',
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -75,7 +75,11 @@ class RequestDetail extends StatelessWidget {
                           'Recibirás', 
                           style: TextStyle(fontWeight: FontWeight.bold, color: _colorPrimary),
                         ),
-                        Text('Dinero digital'),
+                        Row(children: [
+                          Icon(Icons.info_outline, color: Colors.grey[600]),
+                          SizedBox(width: 4),
+                          Text('Dinero digital'),
+                        ],)
                       ],
                     ),
                   ],
@@ -123,7 +127,9 @@ class RequestDetail extends StatelessWidget {
                 left: 16,
                 right: 16,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ExchangeInProcess()));
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: _colorPrimary,
                     foregroundColor: Colors.white,

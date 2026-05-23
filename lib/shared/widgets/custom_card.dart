@@ -4,8 +4,9 @@ class CustomCard extends StatefulWidget {
   final Widget child;
   final String? title;
   final VoidCallback? onTap;
+  final bool? withMarginBottom;
   
-  const CustomCard({super.key, required this.child, this.title, this.onTap});
+  const CustomCard({super.key, required this.child, this.title, this.onTap, this.withMarginBottom});
 
   @override
   State<CustomCard> createState() => _CustomCardState();
@@ -17,6 +18,7 @@ class _CustomCardState extends State<CustomCard> {
     return SizedBox(
       width: double.infinity,
       child: Card(
+        margin: widget.withMarginBottom == true ? EdgeInsets.only(bottom: 16) : EdgeInsets.zero,
         elevation: 1,
         color: Colors.white,
         child: InkWell(

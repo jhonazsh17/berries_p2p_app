@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:berries_p2p_app/core/theme/app_colors.dart';
 import 'package:berries_p2p_app/features/home/presentation/widgets/custom_avatar.dart';
+import 'package:berries_p2p_app/shared/widgets/custom_card.dart';
 
 class CustomBoxItem extends StatelessWidget {
   const CustomBoxItem({super.key, this.withPaddingBottom, this.onTap});
@@ -11,37 +12,17 @@ class CustomBoxItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return CustomCard(
       onTap: onTap,
-      child: Container(
-        margin: EdgeInsets.only(bottom: withPaddingBottom == true ? 16 : 0),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey[300]!,
-              blurRadius: 5,
-              offset: Offset(0, 2),
-            ),
-          ],
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Padding( 
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            children: [
-              _avatar(),
-              _mainInfo(),
-              _sideInfo(),
-            ],
-          ),
-        ),
+      withMarginBottom: true,
+      child: Row(
+        children: [
+          CustomAvatar(),
+          _mainInfo(),
+          _sideInfo(),
+        ],
       ),
     );
-  }
-
-  Widget _avatar() {
-    return CustomAvatar();
   }
 
   Widget _mainInfo() {
