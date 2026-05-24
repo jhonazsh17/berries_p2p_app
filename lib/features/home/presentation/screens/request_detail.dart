@@ -122,10 +122,8 @@ class RequestDetail extends StatelessWidget {
                 text: 'Recuerda: realiza el intercambio en un lugar público y verifica el pago antes de entregar el efectivo',
               ),
               SizedBox(height: 16),
-              Positioned(
-                bottom: 16,
-                left: 16,
-                right: 16,
+              SizedBox(
+              width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ExchangeInProcess()));

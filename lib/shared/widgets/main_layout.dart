@@ -48,7 +48,7 @@ class _MainLayoutState extends State<MainLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(15, 81, 202, 83),
+      backgroundColor: const Color(0xFFEAF8EE),
 
       appBar: widget.withAppBar ? AppBar(
         foregroundColor: Colors.white,
