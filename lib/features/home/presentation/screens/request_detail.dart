@@ -9,8 +9,9 @@ import 'package:berries_p2p_app/features/home/presentation/screens/exchange_in_p
 
 class RequestDetail extends StatelessWidget {
   final Color _colorPrimary = AppColors.primary;
+  final Map<String, dynamic> requester;
 
-  const RequestDetail({super.key});
+  const RequestDetail({super.key, required this.requester});
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +24,10 @@ class RequestDetail extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 20),
-              CustomAvatar(radius: 50),
+              CustomAvatar(radius: 50, imagePath: requester['image']),
               SizedBox(height: 20),
               Text(
-                'Monkey D. Luffy',
+                requester['person'],
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -38,7 +39,7 @@ class RequestDetail extends StatelessWidget {
                 children: [
                   Icon(Icons.star, color: Colors.amber),
                   SizedBox(width: 4),
-                  Text('4.8 (100)'),
+                  Text('${requester['stars']} (${requester['points']})'),
                 ],
               ),
               SizedBox(height: 16),
@@ -53,7 +54,7 @@ class RequestDetail extends StatelessWidget {
                           'Monto', 
                           style: TextStyle(fontWeight: FontWeight.bold, color: _colorPrimary),
                         ),
-                        Text('S/ 100.00', style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text('S/ ${requester['amount']}', style: TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                     SizedBox(height: 8),
@@ -64,7 +65,7 @@ class RequestDetail extends StatelessWidget {
                           'Quiere', 
                           style: TextStyle(fontWeight: FontWeight.bold, color: _colorPrimary),
                         ),
-                        Text('Dinero en efectivo'),
+                        Text(requester['requestType'] == 'digital' ? 'Dinero digital' : 'Dinero en efectivo'),
                       ],
                     ),
                     SizedBox(height: 8),
@@ -76,9 +77,17 @@ class RequestDetail extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold, color: _colorPrimary),
                         ),
                         Row(children: [
-                          Icon(Icons.info_outline, color: Colors.grey[600]),
+                          GestureDetector(
+                            onTap: () {
+                              showInformationDialog(context);
+                            },
+                            child: Icon(
+                              Icons.info_outline, 
+                              color: Colors.grey[600],
+                            ),
+                          ),
                           SizedBox(width: 4),
-                          Text('Dinero digital'),
+                          Text(requester['requestType'] != 'digital' ? 'Dinero digital' : 'Dinero en efectivo'),
                         ],)
                       ],
                     ),
@@ -89,7 +98,7 @@ class RequestDetail extends StatelessWidget {
               CustomCard(
                 title: 'Ubicación',
                 onTap: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Location()));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Location(requester: requester)));
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -140,6 +149,28 @@ class RequestDetail extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  void showInformationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Información'),
+        content: Text('El Dinero digital hace referencia a que la persona solicitante cuenta con saldo en alguna de sus cuentas de banco o billeteras digitales para proceder con el intercambio.'),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.black87,
+            ),
+            child: Text('Cerrar'),
+          ),
+        ],
       ),
     );
   }

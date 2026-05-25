@@ -6,7 +6,9 @@ import 'package:berries_p2p_app/features/home/presentation/widgets/custom_box_it
 import 'package:berries_p2p_app/shared/widgets/main_layout.dart';
 
 class Location extends StatefulWidget {
-  const Location({super.key});
+  final Map<String, dynamic>? requester;
+
+  const Location({super.key, this.requester});
 
   @override
   State<Location> createState() => _LocationState();
@@ -78,7 +80,7 @@ class _LocationState extends State<Location> {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
-      title: 'Location',
+      title: 'Ubicación',
       withBottomNavigation: false,
       body: _isLoading ? Center(child: CircularProgressIndicator()) : Stack(
         children: [
@@ -124,6 +126,7 @@ class _LocationState extends State<Location> {
               children: [
                 CustomBoxItem(
                   onTap: () {},
+                  requester: widget.requester,
                 ),
                 //const SizedBox(height: 16),
                 /*ElevatedButton(
