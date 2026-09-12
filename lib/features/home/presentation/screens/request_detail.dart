@@ -28,10 +28,7 @@ class RequestDetail extends StatelessWidget {
               SizedBox(height: 20),
               Text(
                 requester['person'],
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 4),
               Row(
@@ -51,10 +48,13 @@ class RequestDetail extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Monto', 
-                          style: TextStyle(fontWeight: FontWeight.bold, color: _colorPrimary),
+                          'Monto',
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        Text('S/ ${requester['amount']}', style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(
+                          'S/ ${requester['amount']}',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ],
                     ),
                     SizedBox(height: 8),
@@ -62,10 +62,14 @@ class RequestDetail extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Quiere', 
-                          style: TextStyle(fontWeight: FontWeight.bold, color: _colorPrimary),
+                          'Quiere',
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        Text(requester['requestType'] == 'digital' ? 'Dinero digital' : 'Dinero en efectivo'),
+                        Text(
+                          requester['requestType'] == 'digital'
+                              ? 'Dinero digital'
+                              : 'Dinero en efectivo',
+                        ),
                       ],
                     ),
                     SizedBox(height: 8),
@@ -73,22 +77,28 @@ class RequestDetail extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Recibirás', 
-                          style: TextStyle(fontWeight: FontWeight.bold, color: _colorPrimary),
+                          'Recibirás',
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        Row(children: [
-                          GestureDetector(
-                            onTap: () {
-                              showInformationDialog(context);
-                            },
-                            child: Icon(
-                              Icons.info_outline, 
-                              color: Colors.grey[600],
+                        Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                showInformationDialog(context);
+                              },
+                              child: Icon(
+                                Icons.info_outline,
+                                color: Colors.grey[600],
+                              ),
                             ),
-                          ),
-                          SizedBox(width: 4),
-                          Text(requester['requestType'] != 'digital' ? 'Dinero digital' : 'Dinero en efectivo'),
-                        ],)
+                            SizedBox(width: 4),
+                            Text(
+                              requester['requestType'] != 'digital'
+                                  ? 'Dinero digital'
+                                  : 'Dinero en efectivo',
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ],
@@ -98,7 +108,12 @@ class RequestDetail extends StatelessWidget {
               CustomCard(
                 title: 'Ubicación',
                 onTap: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Location(requester: requester)));
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Location(requester: requester),
+                    ),
+                  );
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -108,18 +123,31 @@ class RequestDetail extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Calle Martin Waiss 101 - Cercado Máncora (Referencia: Porton rojo)', style: TextStyle(fontSize: 14)),
+                          Text(
+                            'Calle Martin Waiss 101 - Cercado Máncora (Referencia: Porton rojo)',
+                            style: TextStyle(fontSize: 14),
+                          ),
                           SizedBox(height: 4),
-                          Text('A 500m de tí', style: TextStyle(color: Colors.grey[600], fontSize: 12)),
+                          Text(
+                            'A 500m de tí',
+                            style: TextStyle(
+                              color: Colors.grey[600],
+                              fontSize: 12,
+                            ),
+                          ),
                         ],
                       ),
-                    ), 
+                    ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.location_on, color: _colorPrimary, size: 40),
+                          Icon(
+                            Icons.location_on,
+                            color: _colorPrimary,
+                            size: 40,
+                          ),
                         ],
                       ),
                     ),
@@ -128,18 +156,24 @@ class RequestDetail extends StatelessWidget {
               ),
               SizedBox(height: 16),
               NotificationBanner(
-                text: 'Recuerda: realiza el intercambio en un lugar público y verifica el pago antes de entregar el efectivo',
+                text:
+                    'Recuerda: realiza el intercambio en un lugar público y verifica el pago antes de entregar el efectivo',
               ),
               SizedBox(height: 16),
               SizedBox(
-              width: double.infinity,
+                width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ExchangeInProcess()));
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ExchangeInProcess(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: _colorPrimary,
-                    foregroundColor: Colors.white,
+                    foregroundColor: Colors.black,
                     padding: EdgeInsets.symmetric(vertical: 16),
                     minimumSize: Size(double.infinity, 56),
                   ),
@@ -158,7 +192,9 @@ class RequestDetail extends StatelessWidget {
       context: context,
       builder: (context) => AlertDialog(
         title: Text('Información'),
-        content: Text('El Dinero digital hace referencia a que la persona solicitante cuenta con saldo en alguna de sus cuentas de banco o billeteras digitales para proceder con el intercambio.'),
+        content: Text(
+          'El Dinero digital hace referencia a que la persona solicitante cuenta con saldo en alguna de sus cuentas de banco o billeteras digitales para proceder con el intercambio.',
+        ),
         actions: [
           ElevatedButton(
             onPressed: () {

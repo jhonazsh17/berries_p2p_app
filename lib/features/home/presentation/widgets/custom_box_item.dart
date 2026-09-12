@@ -4,7 +4,12 @@ import 'package:berries_p2p_app/features/home/presentation/widgets/custom_avatar
 import 'package:berries_p2p_app/shared/widgets/custom_card.dart';
 
 class CustomBoxItem extends StatelessWidget {
-  const CustomBoxItem({super.key, this.withPaddingBottom, this.onTap, this.requester});
+  const CustomBoxItem({
+    super.key,
+    this.withPaddingBottom,
+    this.onTap,
+    this.requester,
+  });
 
   final bool? withPaddingBottom;
   final VoidCallback? onTap;
@@ -35,21 +40,30 @@ class CustomBoxItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(requester?['person'] ?? '', style: TextStyle(fontWeight: FontWeight.bold)),
+            Text(
+              requester?['person'] ?? '',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             SizedBox(height: 4),
             Row(
               children: [
                 Icon(Icons.star, color: Colors.amber, size: 16),
                 Padding(
                   padding: const EdgeInsets.only(left: 4.0),
-                  child: Text('${requester?['stars'] ?? 5} (${requester?['points'] ?? 100} pts.)', style: TextStyle(fontSize: 12)),
+                  child: Text(
+                    '${requester?['stars'] ?? 5} (${requester?['points'] ?? 100} pts.)',
+                    style: TextStyle(fontSize: 12),
+                  ),
                 ),
               ],
             ),
             SizedBox(height: 4),
             Chip(
-              label: Text('Quiere ${requester?['requestType'] == 'digital' ? 'digital' : 'efectivo'}', style: TextStyle(fontSize: 12, color: _colorPrimary)), 
-              backgroundColor: Colors.green[50]!, 
+              label: Text(
+                'Quiere ${requester?['requestType'] == 'digital' ? 'digital' : 'efectivo'}',
+                style: TextStyle(fontSize: 12, color: Colors.black),
+              ),
+              backgroundColor: Colors.green[50]!,
               padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
               side: BorderSide.none,
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -76,17 +90,20 @@ class CustomBoxItem extends StatelessWidget {
               Icon(Icons.location_on, color: Colors.red, size: 16),
               Padding(
                 padding: const EdgeInsets.only(left: 4.0),
-                child: Text('A ${requester?['distance'] ?? 0} mt. de tí', style: TextStyle(fontSize: 12, color: Colors.grey[600])),
+                child: Text(
+                  'A ${requester?['distance'] ?? 0} mt. de tí',
+                  style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                ),
               ),
             ],
           ),
           SizedBox(height: 30),
           Text(
-            'S/. ${requester?['amount'] ?? 50.00}', 
+            'S/. ${requester?['amount'] ?? 50.00}',
             style: TextStyle(
-              fontWeight: FontWeight.bold, 
-              fontSize: 22, 
-              color: _colorPrimary
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+              color: Colors.black,
             ),
           ),
         ],

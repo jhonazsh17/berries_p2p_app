@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:berries_p2p_app/features/home/presentation/screens/home.dart';
+import 'package:berries_p2p_app/core/theme/app_colors.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -17,20 +18,17 @@ class Login extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    'Berries', 
+                    'Berries',
                     style: TextStyle(
-                      fontSize: 32, 
-                      fontWeight: FontWeight.bold, 
-                      color: const Color(0xFF26de81)
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.primary,
                     ),
                   ),
                   SizedBox(height: 16),
                   Text(
                     'Conecta - Intercambia - Confía',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey[600]
-                    ),
+                    style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 16),
                   TextField(
@@ -38,15 +36,12 @@ class Login extends StatelessWidget {
                       labelText: 'Correo electrónico o teléfono',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide(color: Colors.green[300]!),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide(color: Colors.green[300]!),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide(color: Colors.green[300]!),
                       ),
                     ),
                   ),
@@ -57,15 +52,12 @@ class Login extends StatelessWidget {
                       labelText: 'Contraseña',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide(color: Colors.green[300]!),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide(color: Colors.green[300]!),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide(color: Colors.green[300]!),
                       ),
                     ),
                   ),
@@ -74,20 +66,23 @@ class Login extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const Home())
+                        MaterialPageRoute(builder: (context) => const Home()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF26de81),
+                      backgroundColor: AppColors.primary,
                     ),
                     child: Text(
-                      'INICIAR SESIÓN', 
-                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                      'INICIAR SESIÓN',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ],  
+                ],
               ),
-            )
+            ),
           ],
         ),
       ),
