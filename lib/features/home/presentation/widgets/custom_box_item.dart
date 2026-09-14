@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:berries_p2p_app/core/theme/app_colors.dart';
 import 'package:berries_p2p_app/features/home/presentation/widgets/custom_avatar.dart';
 import 'package:berries_p2p_app/shared/widgets/custom_card.dart';
 
@@ -13,7 +12,6 @@ class CustomBoxItem extends StatelessWidget {
 
   final bool? withPaddingBottom;
   final VoidCallback? onTap;
-  final Color _colorPrimary = AppColors.primary;
 
   final Map<String, dynamic>? requester;
 

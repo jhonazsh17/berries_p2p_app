@@ -19,11 +19,7 @@ class Login extends StatelessWidget {
                 children: [
                   Text(
                     'Berries',
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.primary,
-                    ),
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 16),
                   Text(

@@ -55,6 +55,7 @@ class _MainLayoutState extends State<MainLayout> {
               title: widget.title != ''
                   ? Text(widget.title!, style: const TextStyle(fontSize: 18))
                   : null,
+              titleSpacing: 16,
               backgroundColor: colorPrimary,
               elevation: 0,
               automaticallyImplyLeading:
