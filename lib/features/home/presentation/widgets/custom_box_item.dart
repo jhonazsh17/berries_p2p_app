@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:berries_p2p_app/features/home/presentation/widgets/custom_avatar.dart';
 import 'package:berries_p2p_app/shared/widgets/custom_card.dart';
+import 'package:berries_p2p_app/shared/widgets/payment_status_chip.dart';
 
 class CustomBoxItem extends StatelessWidget {
   const CustomBoxItem({
@@ -20,11 +21,18 @@ class CustomBoxItem extends StatelessWidget {
     return CustomCard(
       onTap: onTap,
       withMarginBottom: true,
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomAvatar(imagePath: requester?['image']),
-          _mainInfo(),
-          _sideInfo(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CustomAvatar(imagePath: requester?['image']),
+              _mainInfo(),
+              _sideInfo(),
+            ],
+          ),
         ],
       ),
     );
@@ -32,7 +40,7 @@ class CustomBoxItem extends StatelessWidget {
 
   Widget _mainInfo() {
     return Expanded(
-      flex: 2,
+      flex: 4,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Column(
@@ -42,7 +50,7 @@ class CustomBoxItem extends StatelessWidget {
               requester?['person'] ?? '',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 4),
+            SizedBox(height: 8),
             Row(
               children: [
                 Icon(Icons.star, color: Colors.amber, size: 16),
@@ -55,23 +63,40 @@ class CustomBoxItem extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 4),
-            Chip(
-              label: Text(
-                'Quiere ${requester?['requestType'] == 'digital' ? 'digital' : 'efectivo'}',
-                style: TextStyle(fontSize: 12, color: Colors.black),
-              ),
-              backgroundColor: Colors.green[50]!,
-              padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-              side: BorderSide.none,
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
-              ),
+            SizedBox(height: 8),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _requestTypeChip(),
+                const SizedBox(width: 6),
+                if (requester?['status'] case final String status) ...[
+                  PaymentStatusChip(
+                    status: PaymentStatus.values.byName(status),
+                  ),
+                ],
+              ],
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _requestTypeChip() {
+    return Chip(
+      label: Text(
+        'Quiere ${requester?['requestType'] == 'digital' ? 'digital' : 'efectivo'}',
+        style: const TextStyle(
+          fontSize: 12,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      backgroundColor: Colors.green[50]!,
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+      side: BorderSide.none,
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
     );
   }
 
@@ -95,7 +120,7 @@ class CustomBoxItem extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 30),
+          SizedBox(height: 36),
           Text(
             'S/. ${requester?['amount'] ?? 50.00}',
             style: TextStyle(

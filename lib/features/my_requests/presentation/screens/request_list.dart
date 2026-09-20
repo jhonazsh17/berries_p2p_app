@@ -2,6 +2,7 @@ import 'package:berries_p2p_app/features/home/presentation/widgets/custom_box_it
 import 'package:flutter/material.dart';
 import 'package:berries_p2p_app/shared/widgets/custom_button.dart';
 import 'package:berries_p2p_app/shared/widgets/custom_card.dart';
+import 'package:berries_p2p_app/shared/widgets/payment_status_chip.dart';
 
 final buttonList = [
   {
@@ -159,6 +160,7 @@ class _RequestListState extends State<RequestList> {
       'stars': 10,
       'requestType': 'cash',
       'requestDate': '12/09/2026',
+      'status': 'completed',
     };
 
     final requester2 = {
@@ -169,6 +171,7 @@ class _RequestListState extends State<RequestList> {
       'stars': 10,
       'requestType': 'digital',
       'requestDate': '12/09/2026',
+      'status': 'pending',
     };
 
     final list = [requester, requester2];
@@ -226,7 +229,18 @@ class _RequestListState extends State<RequestList> {
               ],
             ),
           ),
-          Column(children: [_chip(modality)]),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              _chip(modality),
+              const SizedBox(height: 8),
+              PaymentStatusChip(
+                status: PaymentStatus.values.byName(
+                  requester['status'] as String,
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -236,7 +250,11 @@ class _RequestListState extends State<RequestList> {
     return Chip(
       label: Text(
         modality,
-        style: const TextStyle(fontSize: 12, color: Colors.black),
+        style: const TextStyle(
+          fontSize: 12,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       backgroundColor: Colors.grey[200]!,
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
