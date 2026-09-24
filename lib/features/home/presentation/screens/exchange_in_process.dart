@@ -1,5 +1,5 @@
 import 'package:berries_p2p_app/features/home/presentation/widgets/custom_avatar.dart';
-import 'package:berries_p2p_app/features/home/presentation/screens/home.dart';
+import 'package:berries_p2p_app/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:berries_p2p_app/shared/widgets/main_layout.dart';
 import 'package:berries_p2p_app/core/theme/app_colors.dart';
@@ -19,11 +19,7 @@ class ExchangeInProcess extends StatelessWidget {
           children: [
             SizedBox(height: 40),
 
-            Icon(
-              Icons.sync_alt_rounded,
-              size: 90,
-              color: AppColors.primary,
-            ),
+            Icon(Icons.sync_alt_rounded, size: 90, color: AppColors.primary),
 
             SizedBox(height: 24),
 
@@ -56,10 +52,7 @@ class ExchangeInProcess extends StatelessWidget {
             Text(
               'Comisión: S/. 1.00 (1%)',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[700],
-              ),
+              style: TextStyle(fontSize: 14, color: Colors.grey[700]),
             ),
 
             SizedBox(height: 32),
@@ -73,9 +66,7 @@ class ExchangeInProcess extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          CustomAvatar(
-                            radius: 30,
-                          ),
+                          CustomAvatar(radius: 30),
                           SizedBox(height: 8),
                           Text(
                             'Tú',
@@ -127,9 +118,7 @@ class ExchangeInProcess extends StatelessWidget {
                       ),
                       Column(
                         children: [
-                          CustomAvatar(
-                            radius: 30,
-                          ),
+                          CustomAvatar(radius: 30),
                           SizedBox(height: 8),
                           Text(
                             'Solicitante',
@@ -165,7 +154,9 @@ class ExchangeInProcess extends StatelessWidget {
                   builder: (context) {
                     return AlertDialog(
                       title: Text('Cancelar intercambio'),
-                      content: Text('¿Estás seguro de que deseas cancelar este intercambio?'),
+                      content: Text(
+                        '¿Estás seguro de que deseas cancelar este intercambio?',
+                      ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
@@ -182,7 +173,12 @@ class ExchangeInProcess extends StatelessWidget {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Home()));
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const HomeScreen(),
+                              ),
+                            );
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.primary,
@@ -212,7 +208,10 @@ class ExchangeInProcess extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 16),
                 minimumSize: Size(double.infinity, 50),
               ),
-              child: Text('Finalizar intercambio', style: TextStyle(fontSize: 16)),
+              child: Text(
+                'Finalizar intercambio',
+                style: TextStyle(fontSize: 16),
+              ),
             ),
           ],
         ),

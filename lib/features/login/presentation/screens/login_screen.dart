@@ -1,6 +1,6 @@
 import 'package:berries_p2p_app/core/constants/app_strings.dart';
 import 'package:flutter/material.dart';
-import 'package:berries_p2p_app/features/home/presentation/screens/home.dart';
+import 'package:berries_p2p_app/features/home/presentation/screens/home_screen.dart';
 import 'package:berries_p2p_app/core/theme/app_colors.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -68,7 +68,7 @@ class LoginScreen extends StatelessWidget {
   void _navigateToHome(BuildContext context) {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const Home()),
+      MaterialPageRoute(builder: (context) => const HomeScreen()),
     );
   }
 
@@ -83,7 +83,7 @@ class LoginScreen extends StatelessWidget {
   Widget _input(String text, {bool isObscureText = false}) {
     OutlineInputBorder inputBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: AppColors.primaryGrey, width: 1),
+      borderSide: BorderSide(color: AppColors.threeHundredGrey, width: 1),
     );
 
     return TextField(

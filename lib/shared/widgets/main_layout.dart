@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:berries_p2p_app/core/theme/app_colors.dart';
-import 'package:berries_p2p_app/features/home/presentation/screens/home.dart';
+import 'package:berries_p2p_app/features/home/presentation/screens/home_screen.dart';
 import 'package:berries_p2p_app/features/my_requests/presentation/screens/my_requests.dart';
 import 'package:berries_p2p_app/features/messages/presentation/screens/messages.dart';
 import 'package:berries_p2p_app/features/profile/presentation/screens/profile.dart';
@@ -36,7 +36,7 @@ class _MainLayoutState extends State<MainLayout> {
     {'label': 'Perfil', 'icon': Icons.person_outline},
   ];
   final List<Widget> _screens = [
-    const Home(),
+    const HomeScreen(),
     const MyRequests(),
     const Messages(),
     const Profile(),
@@ -47,11 +47,11 @@ class _MainLayoutState extends State<MainLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEAF8EE),
+      backgroundColor: AppColors.fiftyGrey,
 
       appBar: widget.withAppBar
           ? AppBar(
-              foregroundColor: Colors.black,
+              foregroundColor: AppColors.primaryText,
               title: widget.title != ''
                   ? Text(widget.title!, style: const TextStyle(fontSize: 18))
                   : null,
@@ -80,25 +80,26 @@ class _MainLayoutState extends State<MainLayout> {
           : null,
 
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
-
       bottomNavigationBar: widget.withBottomNavigation
-          ? BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              currentIndex: currentIndex,
-              selectedItemColor: colorPrimary,
-              unselectedItemColor: Colors.grey,
-
-              onTap: (index) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => _screens[index]),
-                );
-              },
-
-              items: _navigationButtons(),
-              backgroundColor: Colors.white,
-            )
+          ? _navigationBar()
           : null,
+    );
+  }
+
+  Widget _navigationBar() {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      currentIndex: currentIndex,
+      selectedItemColor: AppColors.primaryText,
+      unselectedItemColor: AppColors.fourHundredGrey,
+      items: _navigationButtons(),
+      backgroundColor: Colors.white,
+      onTap: (index) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => _screens[index]),
+        );
+      },
     );
   }
 
