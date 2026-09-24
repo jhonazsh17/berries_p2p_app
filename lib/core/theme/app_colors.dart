@@ -6,8 +6,9 @@ class AppColors {
   static const Color cream = Color(0xFFffeaa7);
 
   // Text colors
-  static const Color primaryText = Color(0xFF1e272e);
-  static const Color secondaryText = Color(0xFF485460);
+  static const Color primaryText = Color(0xFF0D0D0D);
+  static const Color secondaryText = Color(0xFF242424);
+  static const Color tertiaryText = Color(0xFF3B3B3B);
 
   // Greys colors
   static const Color sixHundredGrey = Color(0xFF696969);
