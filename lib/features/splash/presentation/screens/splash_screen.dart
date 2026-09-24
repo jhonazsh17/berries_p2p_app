@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:berries_p2p_app/features/login/presentation/screens/login.dart';
+import 'package:berries_p2p_app/features/login/presentation/screens/login_screen.dart';
 import 'package:berries_p2p_app/core/constants/app_strings.dart';
+import 'package:berries_p2p_app/core/theme/app_colors.dart';
 
 const _splashDuration = Duration(seconds: 3);
 
 final List<Map> texts = [
-  {"value": AppStrings.appName, "size": 48, "fontWeight": FontWeight.bold},
-  {"value": AppStrings.appMessage, "size": 16, "fontWeight": FontWeight.normal},
+  {
+    "value": AppStrings.appName,
+    "size": 48,
+    "fontWeight": FontWeight.bold,
+    "color": AppColors.primaryText,
+  },
+  {
+    "value": AppStrings.appMessage,
+    "size": 16,
+    "fontWeight": FontWeight.normal,
+    "color": AppColors.secondaryText,
+  },
 ];
 
 class SplashScreen extends StatefulWidget {
@@ -42,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (mounted) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const Login()),
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
       );
     }
   }
@@ -55,6 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
           style: TextStyle(
             fontSize: text['size'],
             fontWeight: text['fontWeight'],
+            color: text['color'],
           ),
         ),
     ];
