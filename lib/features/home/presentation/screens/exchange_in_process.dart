@@ -1,4 +1,4 @@
-import 'package:berries_p2p_app/features/home/presentation/widgets/custom_avatar.dart';
+import 'package:berries_p2p_app/shared/widgets/custom_avatar.dart';
 import 'package:berries_p2p_app/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:berries_p2p_app/shared/widgets/main_layout.dart';

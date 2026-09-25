@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:berries_p2p_app/features/home/presentation/widgets/custom_box_item.dart';
+import 'package:berries_p2p_app/shared/widgets/custom_box_item.dart';
 import 'package:berries_p2p_app/features/home/presentation/screens/request_detail.dart';
 import 'package:berries_p2p_app/features/new_request_money/presentation/screens/new_request_money.dart';
 import 'package:berries_p2p_app/shared/widgets/main_layout.dart';
