@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:berries_p2p_app/features/home/presentation/widgets/custom_avatar.dart';
+import 'package:berries_p2p_app/shared/widgets/custom_avatar.dart';
 import 'package:berries_p2p_app/shared/widgets/custom_card.dart';
 import 'package:berries_p2p_app/shared/widgets/payment_status_chip.dart';
 

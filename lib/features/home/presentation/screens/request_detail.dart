@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:berries_p2p_app/core/theme/app_colors.dart';
-import 'package:berries_p2p_app/features/home/presentation/widgets/custom_avatar.dart';
+import 'package:berries_p2p_app/shared/widgets/custom_avatar.dart';
 import 'package:berries_p2p_app/shared/widgets/main_layout.dart';
 import 'package:berries_p2p_app/shared/widgets/custom_card.dart';
 import 'package:berries_p2p_app/shared/widgets/notification_banner.dart';

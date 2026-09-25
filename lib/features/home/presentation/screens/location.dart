@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:berries_p2p_app/features/home/presentation/widgets/custom_box_item.dart';
+import 'package:berries_p2p_app/shared/widgets/custom_box_item.dart';
 import 'package:berries_p2p_app/shared/widgets/main_layout.dart';
 
 class Location extends StatefulWidget {
@@ -31,7 +31,10 @@ class _LocationState extends State<Location> {
       if (!serviceEnabled) {
         // Los servicios de ubicación están deshabilitados
         setState(() {
-          _currentPosition = LatLng(-12.0464, -77.0428); // Coordenadas por defecto (Lima)
+          _currentPosition = LatLng(
+            -12.0464,
+            -77.0428,
+          ); // Coordenadas por defecto (Lima)
           _isLoading = false;
         });
         return;
@@ -44,7 +47,10 @@ class _LocationState extends State<Location> {
         if (permission == LocationPermission.denied) {
           // Permisos denegados
           setState(() {
-            _currentPosition = LatLng(-12.0464, -77.0428); // Coordenadas por defecto
+            _currentPosition = LatLng(
+              -12.0464,
+              -77.0428,
+            ); // Coordenadas por defecto
             _isLoading = false;
           });
           return;
@@ -54,7 +60,10 @@ class _LocationState extends State<Location> {
       if (permission == LocationPermission.deniedForever) {
         // Permisos denegados permanentemente
         setState(() {
-          _currentPosition = LatLng(-12.0464, -77.0428); // Coordenadas por defecto
+          _currentPosition = LatLng(
+            -12.0464,
+            -77.0428,
+          ); // Coordenadas por defecto
           _isLoading = false;
         });
         return;
@@ -71,7 +80,10 @@ class _LocationState extends State<Location> {
       });
     } catch (e) {
       setState(() {
-        _currentPosition = LatLng(-12.0464, -77.0428); // Coordenadas por defecto en caso de error
+        _currentPosition = LatLng(
+          -12.0464,
+          -77.0428,
+        ); // Coordenadas por defecto en caso de error
         _isLoading = false;
       });
     }
@@ -82,54 +94,54 @@ class _LocationState extends State<Location> {
     return MainLayout(
       title: 'Ubicación',
       withBottomNavigation: false,
-      body: _isLoading ? Center(child: CircularProgressIndicator()) : Stack(
-        children: [
-          FlutterMap(
-            options: MapOptions(
-              initialCenter: _currentPosition ?? LatLng(-12.0464, -77.0428),
-              initialZoom: 15,
-            ),
-            children: [
-              TileLayer(
-                urlTemplate:
-                    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                userAgentPackageName: 'com.example.berries_p2p_app',
-              ),
-              MarkerLayer(
-                markers: [
-                  Marker(
-                    point: _currentPosition ?? LatLng(-12.0464, -77.0428),
-                    width: 80,
-                    height: 80,
-                    child: Icon(
-                      Icons.location_on,
-                      size: 40,
-                      color: Colors.red,
-                      shadows: [
-                        Shadow(
-                          color: Colors.black.withValues(alpha: 0.3),
-                          blurRadius: 4,
-                          offset: Offset(0, 2),
+      body: _isLoading
+          ? Center(child: CircularProgressIndicator())
+          : Stack(
+              children: [
+                FlutterMap(
+                  options: MapOptions(
+                    initialCenter:
+                        _currentPosition ?? LatLng(-12.0464, -77.0428),
+                    initialZoom: 15,
+                  ),
+                  children: [
+                    TileLayer(
+                      urlTemplate:
+                          'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                      userAgentPackageName: 'com.example.berries_p2p_app',
+                    ),
+                    MarkerLayer(
+                      markers: [
+                        Marker(
+                          point: _currentPosition ?? LatLng(-12.0464, -77.0428),
+                          width: 80,
+                          height: 80,
+                          child: Icon(
+                            Icons.location_on,
+                            size: 40,
+                            color: Colors.red,
+                            shadows: [
+                              Shadow(
+                                color: Colors.black.withValues(alpha: 0.3),
+                                blurRadius: 4,
+                                offset: Offset(0, 2),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          Positioned(
-            bottom: 16,
-            left: 16,
-            right: 16,
-            child: Column(
-              children: [
-                CustomBoxItem(
-                  onTap: () {},
-                  requester: widget.requester,
+                  ],
                 ),
-                //const SizedBox(height: 16),
-                /*ElevatedButton(
+                Positioned(
+                  bottom: 16,
+                  left: 16,
+                  right: 16,
+                  child: Column(
+                    children: [
+                      CustomBoxItem(onTap: () {}, requester: widget.requester),
+                      //const SizedBox(height: 16),
+                      /*ElevatedButton(
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => RequestDetail()));
                   },
@@ -140,11 +152,11 @@ class _LocationState extends State<Location> {
                   ),
                   child: Text('Conectar', style: TextStyle(fontSize: 16)),
                 ),*/
+                    ],
+                  ),
+                ),
               ],
             ),
-          ),
-        ],
-      ),
     );
   }
 }
