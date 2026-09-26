@@ -16,6 +16,7 @@ class HomeScreen extends StatelessWidget {
       'stars': 5,
       'requestType': 'cash',
       'image': 'assets/images/luffy-nika.png',
+      'status': 'pending'
     },
     {
       'person': 'Roronoa Zoro',
@@ -25,6 +26,7 @@ class HomeScreen extends StatelessWidget {
       'stars': 4,
       'requestType': 'digital',
       'image': 'assets/images/zoro.png',
+      'status': 'pending'
     },
     {
       'person': 'Nami',
@@ -34,6 +36,7 @@ class HomeScreen extends StatelessWidget {
       'stars': 3,
       'requestType': 'cash',
       'image': 'assets/images/nami.png',
+      'status': 'pending'
     },
     {
       'person': 'Sanji',
@@ -43,6 +46,7 @@ class HomeScreen extends StatelessWidget {
       'stars': 2,
       'requestType': 'digital',
       'image': 'assets/images/sanji.png',
+      'status': 'pending'
     },
     {
       'person': 'Tony T. Chopper',
@@ -52,6 +56,7 @@ class HomeScreen extends StatelessWidget {
       'stars': 1,
       'requestType': 'cash',
       'image': 'assets/images/chopper.png',
+      'status': 'pending'
     },
     {
       'person': 'Nico Robin',
@@ -61,6 +66,7 @@ class HomeScreen extends StatelessWidget {
       'stars': 5,
       'requestType': 'digital',
       'image': 'assets/images/robin.png',
+      'status': 'pending'
     },
     {
       'person': 'Franky',
@@ -70,6 +76,7 @@ class HomeScreen extends StatelessWidget {
       'stars': 4,
       'requestType': 'cash',
       'image': 'assets/images/franki.png',
+      'status': 'pending'
     },
     {
       'person': 'Brook',
@@ -79,6 +86,7 @@ class HomeScreen extends StatelessWidget {
       'stars': 3,
       'requestType': 'digital',
       'image': 'assets/images/brook.png',
+      'status': 'pending'
     },
     {
       'person': 'Jinbe',
@@ -88,6 +96,7 @@ class HomeScreen extends StatelessWidget {
       'stars': 2,
       'requestType': 'cash',
       'image': 'assets/images/jinbe.png',
+      'status': 'pending'
     },
     {
       'person': 'Usopp',
@@ -97,6 +106,7 @@ class HomeScreen extends StatelessWidget {
       'stars': 1,
       'requestType': 'digital',
       'image': 'assets/images/usopp.png',
+      'status': 'pending'
     },
   ];
 

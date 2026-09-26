@@ -6,7 +6,6 @@ class CustomAvatar extends StatelessWidget {
 
   final double radius;
   final String? imagePath;
-  final Color _colorPrimary = AppColors.primary;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +13,7 @@ class CustomAvatar extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-          color: _colorPrimary,
+          color: AppColors.fourHundredGrey,
           width: 3,
         ),
       ),
